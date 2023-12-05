@@ -23,8 +23,8 @@ const AudioGraph = () => {
 
         const wavesurferInstance = WaveSurfer.create({
           container: "#waveform",
-          waveColor: "violet",
-          progressColor: "purple",
+          waveColor: "#ad3737", // Blue color
+          progressColor: "#2980b9", // Darker blue for progress
           height: 'auto',
           width: 500,
           backend: 'MediaElement',
@@ -60,18 +60,9 @@ const AudioGraph = () => {
   };
 
   return (
-    <div>
-      <input
-        type="file"
-        accept=".wav"
-        onChange={handleFileChange}
-        ref={inputRef}
-      />
-      <div id="waveform"></div>
-      <button onClick={handlePlayPause}>Play/Pause</button>
-
-      <div>
-        <label>Upload Patient Photo:</label>
+    <div style={{ padding: "20px", backgroundColor: "#ecf0f1" }}>
+      <div style={{ float: "left", marginRight: "20px", marginBottom: "20px" }}>
+        <label style={{ color: "#3498db" }}>Upload Patient Photo:</label>
         <input
           type="file"
           accept="image/*"
@@ -82,10 +73,35 @@ const AudioGraph = () => {
           <img
             src={patientPhoto}
             alt="Patient"
-            style={{ width: "100px", height: "100px" }}
+            style={{ width: "100px", height: "100px", marginTop: "10px" }}
           />
         )}
       </div>
+      <div id="waveform" style={{ float: "left", clear: "both", marginBottom: "20px" }}></div>
+      <button
+        onClick={handlePlayPause}
+        style={{
+          width: "200px",
+          float: "left",
+          clear: "both",
+          marginBottom: "20px",
+          backgroundColor: "#3498db",
+          color: "#fff",
+          border: "none",
+          padding: "10px",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        Play/Pause
+      </button>
+      <input
+        type="file"
+        accept=".wav"
+        onChange={handleFileChange}
+        ref={inputRef}
+        style={{ marginBottom: "20px" }}
+      />
     </div>
   );
 };
